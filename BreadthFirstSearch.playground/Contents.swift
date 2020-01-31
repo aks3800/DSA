@@ -115,3 +115,20 @@ let G = Graph(v: [s, r, v, w, t, x, y, u])
 //G.printDistanceFromSource()
 BFS(G: G, s: s)
 G.printDistanceFromSource()
+
+
+func printPath(G: Graph, s: Vertices, v: Vertices) {
+    
+    if s.key == v.key {
+        print(s.key)
+    } else if v.predecessor == nil {
+        print("NO PATH")
+    } else {
+        if let parentOfv = v.predecessor {
+            printPath(G: G, s: s, v: parentOfv)
+            print(v.key)
+        }
+    }
+}
+
+printPath(G: G, s: s, v: t)
